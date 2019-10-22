@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Transporte;
+use App\Unidade;
 use App\Veiculo;
+use App\Entrada;
 
 class IngressoController extends Controller
 {
@@ -18,7 +19,7 @@ class IngressoController extends Controller
     
     public function cadastrar()
     {
-    	return view('ingresso.cadastrar', ['veiculo' => Veiculo::all(['id', 'placa'])]);
+    	return view('ingresso.cadastrar', ['veiculo' => Veiculo::all(['id', 'placa'])], ['unidade' => Unidade::all("id", "descricao")]);
     }
 
     /*public function cadastrar()
@@ -29,12 +30,14 @@ class IngressoController extends Controller
 
     public function listar()
     {
-    	return view('ingresso.listar');
+    	//return view('ingresso.listar');
+        $ingresso = Entrada::paginate(20);
+        return view('ingresso.listar', compact('ingresso'));
     }
 
     public function salvar(Request $request)
     {
-        $entradas = new entradas();
+        $entradas = new Entrada();
         $entradas->fill($request->all());
         $entradas->save();
         \Session::flash('flash_message', [

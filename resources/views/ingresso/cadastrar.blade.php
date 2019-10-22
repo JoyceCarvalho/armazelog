@@ -106,7 +106,9 @@
                              <div class="form-group" {{ $errors->has('unidade') ? 'has-error':'' }}>
                                 <label for="unidade_id">Unidade</label>
                                 <select name="unidade_id" id="unidade_id" class="form-control">
-                                  <option>kg</option>
+                                    @foreach($unidade as $c)
+                                        <option value="{{$c->id}}">{{$c->descricao}}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
