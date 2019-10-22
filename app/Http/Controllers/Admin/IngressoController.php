@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Transporte;
+use App\Veiculo;
 
 class IngressoController extends Controller
 {
@@ -16,7 +18,7 @@ class IngressoController extends Controller
     
     public function cadastrar()
     {
-    	return view('ingresso.cadastrar');
+    	return view('ingresso.cadastrar', ['veiculo' => Veiculo::all(['id', 'placa'])]);
     }
 
     /*public function cadastrar()

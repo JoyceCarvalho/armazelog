@@ -25,7 +25,7 @@
 
                            <div class="form-group">
                             <label for="hora">Hora</label>
-                            <input type="text" name="hora" class="form-control" placeholder="hora do ingresso">
+                            <input type="time" name="hora" class="form-control" placeholder="hora do ingresso">
                             @if($errors->has('data'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('hora') }}</strong>
@@ -35,7 +35,7 @@
 
                            <div class="form-group">
                             <label for="data">Data</label>
-                            <input type="text" name="data" class="form-control" placeholder="Data do ingresso">
+                            <input type="date" name="data" class="form-control" placeholder="Data do ingresso">
                             @if($errors->has('data'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('data') }}</strong>
@@ -97,7 +97,7 @@
                                 <label for="veiculo_id">Veiculo</label>
                                 <select name="veiculo_id" id="veiculo_id" class="form-control">
                                 @foreach($veiculo as $c)
-                                 <option value="{{$c->id}}">{{$c->transporte->nome}}</option>
+                                 <option value="{{$c->id}}">{{$c->placa}}</option>
                                 @endforeach
                                </select>
                             </div>
